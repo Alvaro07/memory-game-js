@@ -1,0 +1,112 @@
+/*/ 
+ / Board heder 
+/*/
+
+.board__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 640px;
+  width: 100%;
+  padding-bottom: 10px;
+
+  &__attemps {
+    text-align: left;
+    font-size: 1.8rem;
+  }
+}
+
+
+/*/ 
+ / Board
+/*/
+
+.board {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 12px;
+    
+    width: 100%;
+    max-width: 640px;
+    
+    background-color: white;
+    border: 10px solid white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0px #e0e0e0;
+
+    &.is-disabled {
+      pointer-events: none;
+    }
+  }
+}
+
+/*/ 
+ / Board Card
+/*/
+
+
+.card {
+  height: 140px;
+  perspective: 600px;
+
+  &__scene {
+    height: 100%;
+    transition: transform .3s ease-in;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+
+    &.is-flipped {
+      transform: rotateY(180deg);
+    }
+  }
+
+  
+
+  &__face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+    font-size: var(--card-font-size);
+    text-align: center;
+    border-radius: 3px;
+    background: var(--bg-color);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    &--front {
+      --bg-color: Gainsboro;
+      --card-font-size: 6rem;
+
+      backface-visibility: hidden;
+      font-weight: 700;
+      transition: .1s ease-in all;
+      
+      &:hover {
+        --bg-color: LightYellow;
+      }
+    }
+
+    &--back {
+      --bg-color: SlateGray;
+      --card-font-size: 8rem;
+
+      transform: rotateY( 180deg );
+      color: white;
+    }
+  }
+}
+
