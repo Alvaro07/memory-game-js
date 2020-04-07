@@ -16,6 +16,7 @@ body {
 
 .reset-button {
   --bg-color: #{rgba(SlateGray, .8)};
+  --shadow-color: #{rgba(#5b6c7d, .8)};
 
   background-color: var(--bg-color);
   color: white;
@@ -25,8 +26,11 @@ body {
   font-family: 'Fira Code', monospace;
   cursor: pointer;
   transition: .1s all ease-in;
+  box-shadow: 2px 2px 0 var(--shadow-color);
 
   &:hover {
     --bg-color: SlateGray;
+    --shadow-color: #5b6c7d;
   }
 }
+
