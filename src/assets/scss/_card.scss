@@ -38,6 +38,7 @@
     background: var(--bg-color);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    transition: all ease .1s;
 
     &--front {
       --bg-color: Gainsboro;
@@ -58,6 +59,10 @@
 
       transform: rotateY( 180deg );
       color: white;
+    }
+
+    &.is-success {
+      --bg-color: #515b65;
     }
   }
 }
