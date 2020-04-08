@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "gh-pages": "git subtree push --prefix dist origin gh-pages"
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "Álvaro González",

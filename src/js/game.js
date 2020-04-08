@@ -22,15 +22,16 @@ export default class Game {
       e.classList.remove('is-flipped')
     })
 
+    this.setAttemp(true)
+
     setTimeout(() => {
       this.boardArray = this.setBoardArray()
       this.startGame()
-      this.setAttemp('reset')
     }, flipsCards.length ? 500 : 0)
   }
 
-  setAttemp (reset) {
-    reset
+  setAttemp (bol) {
+    bol
       ? this.attemps = 0
       : ++this.attemps
     document.getElementById('gameAttemps').innerHTML = this.attemps
