@@ -30,6 +30,7 @@ export default class Board {
   checkMatch (name) {
     if (name === this.firstCard) {
       this.firstCard = null
+      setTimeout(() => this.setSuccesCard(name), 300)
     } else {
       const board = document.getElementById('boardGame')
       this.game.setAttemp()
@@ -47,6 +48,12 @@ export default class Board {
   backOffCards (card) {
     document.querySelectorAll(`[data-card="${card}"]`).forEach(el => {
       el.querySelector('.card__scene').classList.remove('is-flipped')
+    })
+  }
+
+  setSuccesCard (card) {
+    document.querySelectorAll(`[data-card="${card}"]`).forEach(el => {
+      el.querySelector('.card__face--back').classList.add('is-success')
     })
   }
 }
