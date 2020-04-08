@@ -5,4 +5,6 @@ A memory game developed with Javascript + Scss + Webpack
 
 ---
 
-![alt text](memory-game.PNG "memory game")
+<p align="center">
+  <img src="memory-game.PNG" alt="memory game">
+</p>
