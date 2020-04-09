@@ -30,6 +30,7 @@ export default class Board {
   checkMatch (name) {
     if (name === this.firstCard) {
       this.firstCard = null
+      this.game.setAttemp()
       setTimeout(() => this.setSuccesCard(name), 300)
     } else {
       const board = document.getElementById('boardGame')
