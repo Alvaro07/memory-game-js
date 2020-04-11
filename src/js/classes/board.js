@@ -16,7 +16,7 @@ export default class Board {
     this.setBoardSize(this.game.level)
 
     document.querySelectorAll('.card').forEach(e => {
-      e.querySelector('.card__scene').addEventListener('click', () => {
+      e.querySelector('.card__face--front').addEventListener('click', () => {
         this.flipCard(e)
       })
     })
