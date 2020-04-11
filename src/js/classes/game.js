@@ -1,10 +1,11 @@
 import Board from './board.js'
 
 export default class Game {
-  constructor (items) {
+  constructor (items, level) {
     this.items = items
     this.boardArray = this.setBoardArray()
     this.attemps = 0
+    this.level = level
   }
 
   setBoardArray () {
@@ -12,8 +13,11 @@ export default class Game {
   }
 
   startGame () {
-    const memoryBoard = new Board(this.boardArray, this)
-    memoryBoard.createBoard()
+    console.log(this.boardArray)
+    new Board(this.boardArray, this).createBoard()
+
+    document.getElementById('boardWrap').classList.remove('is-hidden')
+    document.getElementById('levelSetup').classList.add('is-hidden')
   }
 
   resetGame () {
@@ -25,8 +29,8 @@ export default class Game {
     this.setAttemp(true)
 
     setTimeout(() => {
-      this.boardArray = this.setBoardArray()
-      this.startGame()
+      document.getElementById('boardWrap').classList.add('is-hidden')
+      document.getElementById('levelSetup').classList.remove('is-hidden')
     }, flipsCards.length ? 500 : 0)
   }
 

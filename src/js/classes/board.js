@@ -11,6 +11,7 @@ export default class Board {
   createBoard () {
     this.items.forEach(e => this.cards.push(new Card(e)))
     document.getElementById('boardGame').innerHTML = this.cards.map(e => e.template).join('')
+    this.setBoardSize(this.game.level)
 
     document.querySelectorAll('.card').forEach(e => {
       e.querySelector('.card__scene').addEventListener('click', () => {
@@ -56,5 +57,13 @@ export default class Board {
     document.querySelectorAll(`[data-card="${card}"]`).forEach(el => {
       el.querySelector('.card__face--back').classList.add('is-success')
     })
+  }
+
+  setBoardSize (level) {
+    if (level === 'hard') {
+      document.getElementById('boardWrap').classList.add('is-medium')
+    } else if (level === 'expert') {
+      document.getElementById('boardWrap').classList.add('is-big')
+    }
   }
 }

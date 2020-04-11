@@ -1,0 +1,24 @@
+html {
+  min-height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.6rem;
+  color: SlateGray;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+
+.page-wrap {
+  padding: 0 25px 30px 20px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+
+
