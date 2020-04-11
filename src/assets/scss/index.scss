@@ -1,5 +1,7 @@
-@import 'reset';
-@import 'base';
-@import 'header';
-@import 'board';
-@import 'card';
+@import 'base/reset';
+@import 'base/base';
+@import 'components/header';
+@import 'components/board';
+@import 'components/setup';
+@import 'components/button';
+@import 'components/card';
