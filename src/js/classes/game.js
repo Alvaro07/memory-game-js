@@ -13,7 +13,6 @@ export default class Game {
   }
 
   startGame () {
-    console.log(this.boardArray)
     new Board(this.boardArray, this).createBoard()
 
     document.getElementById('boardWrap').classList.remove('is-hidden')
@@ -29,7 +28,9 @@ export default class Game {
     this.setAttemp(true)
 
     setTimeout(() => {
-      document.getElementById('boardWrap').classList.add('is-hidden')
+      const boardWrap = document.getElementById('boardWrap')
+      boardWrap.classList.add('is-hidden')
+      boardWrap.classList.remove('is-big', 'is-medium')
       document.getElementById('levelSetup').classList.remove('is-hidden')
     }, flipsCards.length ? 500 : 0)
   }

@@ -18,23 +18,33 @@
     --shadow-color: #414f5d;
   }
 
+  &--green {
+    --bg-color: #{rgba(SeaGreen, .8)};
+    --shadow-color: #{darken(SeaGreen, 10%)};
+    
+    &:hover {
+      --bg-color: SeaGreen;
+      --shadow-color: #{darken(SeaGreen, 20%)};
+    }
+  }
+
   &--blue {
     --bg-color: #{rgba(RoyalBlue, .8)};
-    --shadow-color: rgba(20, 61, 103, .8);
+    --shadow-color: #{darken(RoyalBlue, 10%)};
     
     &:hover {
       --bg-color: RoyalBlue;
-      --shadow-color: #414f5d;
+      --shadow-color: #{darken(RoyalBlue, 20%)};
     }
   }
   
   &--red {
     --bg-color: #{rgba(FireBrick, .8)};
-    --shadow-color: rgba(103, 20, 20, .8);
+    --shadow-color: #{darken(FireBrick, 10%)};
     
     &:hover {
       --bg-color: FireBrick;
-      --shadow-color: #731010;
+      --shadow-color: #{darken(FireBrick, 20%)};
     }
   }
 
