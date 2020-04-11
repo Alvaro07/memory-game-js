@@ -4,8 +4,9 @@
   "description": "A memory game in Js",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack-dev-server"
+    "build": "rimraf dist && webpack --mode production",
+    "dev": "webpack-dev-server",
+    "deploy": "npm run build && git add dist && git commit -m 'deploy' && git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
   "author": "Álvaro González",

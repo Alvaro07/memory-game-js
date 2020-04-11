@@ -1,4 +1,5 @@
 import Card from './card.js'
+import { chronoStop } from '../utils/chronometer'
 
 export default class Board {
   constructor (items, game) {
@@ -6,6 +7,7 @@ export default class Board {
     this.cards = []
     this.firstCard = null
     this.game = game
+    this.finish = false
   }
 
   createBoard () {
@@ -32,7 +34,10 @@ export default class Board {
     if (name === this.firstCard) {
       this.firstCard = null
       this.game.setAttemp()
-      setTimeout(() => this.setSuccesCard(name), 300)
+      setTimeout(() => {
+        this.setSuccesCard(name)
+        this.checkFinish()
+      }, 300)
     } else {
       const board = document.getElementById('boardGame')
       this.game.setAttemp()
@@ -44,6 +49,13 @@ export default class Board {
         this.firstCard = null
         board.classList.remove('is-disabled')
       }, 1000)
+    }
+  }
+
+  checkFinish () {
+    if (document.querySelectorAll('.is-success').length === this.items.length) {
+      chronoStop()
+      this.finish = true
     }
   }
 
