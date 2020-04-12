@@ -1,7 +1,10 @@
 .c-button {
   --bg-color: #{rgba(SlateGray, .8)};
   --shadow-color: rgba(65, 79, 93, .8);
+  --btn-width: 100%; 
 
+  width: var(--btn-width);
+  display: inline-block;
   background-color: var(--bg-color);
   color: white;
   border: none;
@@ -12,6 +15,11 @@
   cursor: pointer;
   transition: .1s all ease-in;
   box-shadow: 2px 2px 0 var(--shadow-color);
+  
+
+  @include mediaTablet {
+    --btn-width: auto;
+  }
 
   &:hover {
     --bg-color: SlateGray;

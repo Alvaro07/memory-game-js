@@ -8,11 +8,12 @@ export default class Board {
     this.firstCard = null
     this.game = game
     this.finish = false
+    this.boardGame = document.getElementById('boardGame')
   }
 
   createBoard () {
     this.items.forEach(e => this.cards.push(new Card(e)))
-    document.getElementById('boardGame').innerHTML = this.cards.map(e => e.template).join('')
+    this.boardGame.innerHTML = this.cards.map(e => e.template).join('')
     this.setBoardSize(this.game.level)
 
     document.querySelectorAll('.card').forEach(e => {
@@ -39,15 +40,14 @@ export default class Board {
         this.checkFinish()
       }, 300)
     } else {
-      const board = document.getElementById('boardGame')
       this.game.setAttemp()
-      board.classList.add('is-disabled')
+      this.boardGame.classList.add('is-disabled')
 
       setTimeout(() => {
         this.backOffCards(name)
         this.backOffCards(this.firstCard)
         this.firstCard = null
-        board.classList.remove('is-disabled')
+        this.boardGame.classList.remove('is-disabled')
       }, 1000)
     }
   }
@@ -73,9 +73,9 @@ export default class Board {
 
   setBoardSize (level) {
     if (level === 'hard') {
-      document.getElementById('boardWrap').classList.add('is-medium')
+      this.game.boardWrap.classList.add('is-medium')
     } else if (level === 'expert') {
-      document.getElementById('boardWrap').classList.add('is-big')
+      this.game.boardWrap.classList.add('is-big')
     }
   }
 }

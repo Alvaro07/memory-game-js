@@ -19,10 +19,12 @@
   }
 
   &__title {
+    --header-margin: 20px;
+
     display: inline-block;
     position: relative;
     padding: 12px 24px;
-    margin-bottom: 40px;
+    margin-bottom: var(--header-margin);
     z-index: 1;
     
     font-weight: 700;
@@ -33,5 +35,9 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 5px 5px 0px #e0e0e0;
+
+    @include mediaTablet {
+      --header-margin: 40px;
+    }
   }
 }
