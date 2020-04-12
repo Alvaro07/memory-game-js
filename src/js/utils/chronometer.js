@@ -3,14 +3,18 @@ let end = 0
 let diff = 0
 let timerID = 0
 
+let sec
+let min
+let hr
+
 function chrono () {
   end = new Date()
   diff = end - start
   diff = new Date(diff)
 
-  let sec = diff.getSeconds()
-  let min = diff.getMinutes()
-  const hr = diff.getHours() - 1
+  sec = diff.getSeconds()
+  min = diff.getMinutes()
+  hr = diff.getHours() - 1
 
   if (min < 10) {
     min = '0' + min
@@ -37,4 +41,8 @@ function chronoStop () {
   clearTimeout(timerID)
 }
 
-export { chronoStart, chronoStop, chronoReset }
+function getTime () {
+  return `${hr}:${min}:${sec}`
+}
+
+export { chronoStart, chronoStop, chronoReset, getTime }
