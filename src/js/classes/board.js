@@ -8,15 +8,16 @@ export default class Board {
     this.firstCard = null
     this.game = game
     this.finish = false
+    this.boardGame = document.getElementById('boardGame')
   }
 
   createBoard () {
     this.items.forEach(e => this.cards.push(new Card(e)))
-    document.getElementById('boardGame').innerHTML = this.cards.map(e => e.template).join('')
+    this.boardGame.innerHTML = this.cards.map(e => e.template).join('')
     this.setBoardSize(this.game.level)
 
     document.querySelectorAll('.card').forEach(e => {
-      e.querySelector('.card__scene').addEventListener('click', () => {
+      e.querySelector('.card__face--front').addEventListener('click', () => {
         this.flipCard(e)
       })
     })
@@ -24,6 +25,7 @@ export default class Board {
 
   flipCard (e) {
     const name = e.dataset.card
+    e.classList.add('is-flip')
     e.querySelector('.card__scene').classList.add('is-flipped')
     this.firstCard
       ? this.checkMatch(name)
@@ -39,16 +41,9 @@ export default class Board {
         this.checkFinish()
       }, 300)
     } else {
-      const board = document.getElementById('boardGame')
       this.game.setAttemp()
-      board.classList.add('is-disabled')
-
-      setTimeout(() => {
-        this.backOffCards(name)
-        this.backOffCards(this.firstCard)
-        this.firstCard = null
-        board.classList.remove('is-disabled')
-      }, 1000)
+      this.boardGame.classList.add('is-disabled')
+      this.backOffCards(name, this.firstCard)
     }
   }
 
@@ -59,23 +54,33 @@ export default class Board {
     }
   }
 
-  backOffCards (card) {
-    document.querySelectorAll(`[data-card="${card}"]`).forEach(el => {
-      el.querySelector('.card__scene').classList.remove('is-flipped')
-    })
+  backOffCards (card, firstCard) {
+    const cards = [...document.querySelectorAll(`[data-card="${card}"].is-flip`), ...document.querySelectorAll(`[data-card="${firstCard}"].is-flip`)]
+
+    setTimeout(() => cards.forEach(el => el.classList.add('shake-animation')), 250)
+    setTimeout(() => {
+      cards.forEach(el => {
+        el.classList.remove('is-flip', 'shake-animation')
+        el.querySelector('.card__scene').classList.remove('is-flipped')
+      })
+
+      this.firstCard = null
+      this.boardGame.classList.remove('is-disabled')
+    }, 1000)
   }
 
   setSuccesCard (card) {
     document.querySelectorAll(`[data-card="${card}"]`).forEach(el => {
+      el.classList.add('heart-beat-animation')
       el.querySelector('.card__face--back').classList.add('is-success')
     })
   }
 
   setBoardSize (level) {
     if (level === 'hard') {
-      document.getElementById('boardWrap').classList.add('is-medium')
+      this.game.boardWrap.classList.add('is-medium')
     } else if (level === 'expert') {
-      document.getElementById('boardWrap').classList.add('is-big')
+      this.game.boardWrap.classList.add('is-big')
     }
   }
 }

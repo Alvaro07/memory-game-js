@@ -1,5 +1,7 @@
+@import 'settings/mixins';
 @import 'base/reset';
 @import 'base/base';
+@import 'base/animation';
 @import 'components/header';
 @import 'components/board';
 @import 'components/setup';

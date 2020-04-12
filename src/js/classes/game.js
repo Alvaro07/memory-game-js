@@ -7,6 +7,8 @@ export default class Game {
     this.boardArray = this.setBoardArray()
     this.attemps = 0
     this.level = level
+    this.boardWrap = document.getElementById('boardWrap')
+    this.levelSetup = document.getElementById('levelSetup')
   }
 
   setBoardArray () {
@@ -15,10 +17,9 @@ export default class Game {
 
   startGame () {
     new Board(this.boardArray, this).createBoard()
-
     chronoStart()
-    document.getElementById('boardWrap').classList.remove('is-hidden')
-    document.getElementById('levelSetup').classList.add('is-hidden')
+    this.boardWrap.classList.remove('is-hidden')
+    this.levelSetup.classList.add('is-hidden')
   }
 
   resetGame () {
@@ -27,13 +28,11 @@ export default class Game {
       e.classList.remove('is-flipped')
     })
 
-    this.setAttemp(true)
-
     setTimeout(() => {
-      const boardWrap = document.getElementById('boardWrap')
-      boardWrap.classList.add('is-hidden')
-      boardWrap.classList.remove('is-big', 'is-medium')
-      document.getElementById('levelSetup').classList.remove('is-hidden')
+      this.setAttemp(true)
+      this.boardWrap.classList.add('is-hidden')
+      this.boardWrap.classList.remove('is-big', 'is-medium')
+      this.levelSetup.classList.remove('is-hidden')
       chronoReset()
     }, flipsCards.length ? 500 : 0)
   }

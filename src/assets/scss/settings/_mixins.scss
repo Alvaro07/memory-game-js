@@ -1,0 +1,22 @@
+
+/*
+ * Breakpoints
+ */
+
+$tablet: 540px;
+$desktop: 1024px;
+
+/*
+ * Mixins
+ */
+
+ @mixin mediaTablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+@mixin mediaDesktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}

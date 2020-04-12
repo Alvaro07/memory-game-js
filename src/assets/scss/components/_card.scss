@@ -3,10 +3,19 @@
  / Board Card
 /*/
 
-
 .card {
-  height: 140px;
+  --card-height: 100px; 
+
+  height: var(--card-height);
   perspective: 600px;
+
+  @include mediaTablet {
+    --card-height: 120px; 
+  }
+
+  @include mediaDesktop {
+    --card-height: 140px; 
+  }
 
   &__scene {
     height: 100%;
@@ -20,8 +29,6 @@
     }
   }
 
-  
-
   &__face {
     position: absolute;
     width: 100%;
@@ -30,7 +37,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     
     font-size: var(--card-font-size);
     text-align: center;
@@ -56,13 +62,23 @@
     &--back {
       --bg-color: SlateGray;
       --card-font-size: 8rem;
+      --card-padding: 20px;
 
       transform: rotateY( 180deg );
       color: white;
+      padding: var(--card-padding);
+
+      @include mediaTablet {
+        --card-padding: 0;
+      }
+
+      svg {
+        max-width: 100%;
+      }
     }
 
     &.is-success {
-      --bg-color: #515b65;
+      --bg-color: SeaGreen;
       cursor: default;
     }
   }
